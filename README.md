@@ -15,6 +15,7 @@ Menu inicial(Admin/ user);
 	User:
 		Pesquisa de jogos(tipo ou consola);
 		Consulta de datas de lançamento;
-		Consulta de preços.
+		Consulta de preços;
+		Compra de jogos.
 
  
