@@ -16,6 +16,8 @@ Menu inicial(Admin/ user);
 		Pesquisa de jogos(tipo ou consola);
 		Consulta de datas de lançamento;
 		Consulta de preços;
+		Classificação de jogos;
+		Reviews;
 		Compra de jogos.
 
  
