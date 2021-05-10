@@ -18,11 +18,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLoginPress(View view) {
         Button loginButton = (Button)findViewById(R.id.button_login);
+        Button registerButton = (Button)findViewById(R.id.button_register);
+        Button storeButton = (Button)findViewById(R.id.button_store);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        storeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(MainActivity.this, StoreActivity.class));
             }
         });
     }
