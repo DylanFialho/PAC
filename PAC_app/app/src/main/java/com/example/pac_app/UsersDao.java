@@ -14,18 +14,10 @@ public interface UsersDao {
     @Query("SELECT * FROM Users")
     List<Users> getAll();
 
-    @Query("SELECT * FROM Users WHERE id = :id")
-    Users getById(long id);
+    @Query("SELECT * FROM Users WHERE username = :user")
+    Users getByUser(String user);
 
-    @Insert
-    void add(Users country);
+    @Query("SELECT * FROM Users WHERE password = :pass")
+    Users getByPass(String pass);
 
-    @Insert
-    void add(List<Users> countries);
-
-    @Delete
-    void delete(Users country);
-
-    @Update
-    void update(Users country);
 }
