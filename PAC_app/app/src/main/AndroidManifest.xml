@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PAC_app">
+        <activity android:name=".ResgisterActivity"></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

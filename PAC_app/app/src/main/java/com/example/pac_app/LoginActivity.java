@@ -3,30 +3,57 @@ package com.example.pac_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView textUserView = (TextView) findViewById(R.id.textUsername);
-    TextView textPassView = (TextView) findViewById(R.id.textPassword);
+    private EditText textUserView;
+    private EditText textPassView;
+    private Button buttonLogin;
+
+    public static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        login(textUserView.getText().toString(), textPassView.getText().toString(), this);
+        textUserView = findViewById(R.id.textUsername);
+        textPassView = findViewById(R.id.textPassword);
+        buttonLogin = findViewById(R.id.button);
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
+            }
+        });
     }
 
-    private void login(String user, String pass, Context context){
+    private void login(){
+        if(userExists(textUserView.getText().toString(), textPassView.getText().toString())){
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }else {
+            Log.e(TAG, "Login Invalido!");;
+        }
+    }
 
-        List<Users> users = AppDatabase.getInstance(context).getUsersDao().getAll();
+    private Boolean userExists(String userName, String pass){
 
-        if(users.contains(user) && users.contains(pass)){
+        Users users = AppDatabase.getInstance(LoginActivity.this).getUsersDao().getByUserAndPass(userName, pass);
 
+        if (users != null){
+            return true;
+        }else{
+            return false;
         }
     }
 }
