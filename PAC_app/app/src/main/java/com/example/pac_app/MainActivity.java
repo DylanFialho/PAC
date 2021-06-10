@@ -9,34 +9,29 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button loginButton;
+    Button registerButton;
+    Button storeButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginButton = (Button) findViewById(R.id.button_login);
-        Button registerButton = findViewById(R.id.button_register);
-        Button storeButton = findViewById(R.id.button_store);
+        initializeViews();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
+        loginButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ResgisterActivity.class));
-            }
-        });
+        registerButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, ResgisterActivity.class)));
 
-        storeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this, StoreActivity.class));
-            }
+        storeButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, StoreActivity.class));
         });
+    }
+
+    protected void initializeViews(){
+        loginButton = (Button) findViewById(R.id.button_login);
+        registerButton = findViewById(R.id.button_register);
+        storeButton = findViewById(R.id.button_store);
     }
 }

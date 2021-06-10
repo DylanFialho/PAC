@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PAC_app">
-        <activity android:name=".ResgisterActivity"></activity>
+        <activity
+            android:name=".StoreActivity"
+            android:label="@string/title_activity_store"
+            android:theme="@style/Theme.PAC_app.NoActionBar"></activity>
+        <activity android:name=".ResgisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
