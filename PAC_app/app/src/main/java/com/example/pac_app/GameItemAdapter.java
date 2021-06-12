@@ -36,25 +36,14 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Game game = this.gameList.get(position);
-        Glide.with(context).load("").into(holder.getGameImageView());
+        Glide.with(context).load(game.getImgURL()).into(holder.getGameImageView());
         holder.getTextViewTitle().setText(game.getTitle());
-        holder.getTextViewDescription().setText(String.valueOf(game.getPrice()));
-        holder.getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        holder.getTextViewPrice().setText(String.valueOf(game.getPrice()));
     }
 
     @Override
     public int getItemCount() {
         return this.gameList.size();
-    }
-
-    public void updateList(List<Game> newItems) {
-        this.gameList = newItems;
-        this.notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -80,12 +69,8 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
             return textViewTitle;
         }
 
-        public TextView getTextViewDescription() {
+        public TextView getTextViewPrice() {
             return textViewPrice;
-        }
-
-        public View getRoot() {
-            return root;
         }
     }
 }

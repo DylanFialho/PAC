@@ -17,6 +17,7 @@ import com.example.pac_app.model.Users;
 public abstract class AppDatabase extends RoomDatabase{
 
     public abstract UsersDao getUsersDao();
+    public abstract GameDao getGameDao();
 
     public static AppDatabase INSTANCE;
 
@@ -38,7 +39,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "After a robbery goes badly wrong in the western town of Blackwater, Arthur Morgan and the Van der Linde gang are " +
                                             "forced to flee. With federal agents and the best bounty hunters in the nation massing on their heels, the gang must rob, steal and " +
                                             "fight their way across the rugged heartland of America in order to survive. As deepening internal divisions threaten to tear the gang apart, " +
-                                            "Arthur must make a choice between his own ideals and loyalty to the gang who raised him.', 'RPG / Ação', 59.99)");
+                                            "Arthur must make a choice between his own ideals and loyalty to the gang who raised him.', '" + Constants.categoryList.get(0) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://upload.wikimedia.org/wikipedia/pt/7/77/Mass_Effect_-" +
@@ -50,7 +51,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "optimized for 4K Ultra HD.\n" +
                                             "\n" +
                                             "Experience an amazingly rich and detailed universe where your decisions have profound con" +
-                                            "sequences on the action and the outcome.', 'RPG / Ação', 59.99)");
+                                            "sequences on the action and the outcome.', '" + Constants.categoryList.get(0) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://upload.wikimedia.org/wikipedia/pt/d/d0/Horizon_Zero_Dawn_capa.png'" +
@@ -61,7 +62,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             " stop a catastrophic threat to the future.\n" +
                                             "\n" +
                                             "Unleash devastating, tactical attacks against unique Machines and rival tribes as you explore an o" +
-                                            "pen world teeming with wildlife and danger.', 'RPG / Ação', 59.99)");
+                                            "pen world teeming with wildlife and danger.', '" + Constants.categoryList.get(1) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png'" +
@@ -69,7 +70,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             " a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary" +
                                             " outlaw going after a one-of-a-kind implant that is the key to immortality. You can customize" +
                                             " your character’s cyberware, skillset and playstyle, and explore a vast city where the choices you" +
-                                            " make shape the story and the world around you.', 'RPG / Ação', 59.99)");
+                                            " make shape the story and the world around you.', '" + Constants.categoryList.get(1) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://image.api.playstation.com/vulcan/ap/rnd/202102/0418/cfbTDvs2m1P9mArX74ClI9HR.png'" +
@@ -80,7 +81,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "A plague is ruining the land and the Tree-of-Life is bleeding " +
                                             "death from its roots. The Tribes stand divided. Explore a world in " +
                                             "turmoil and define its fate – will you be its saviour or lead it to an " +
-                                            "even darker destiny?', 'RPG / Ação', 59.99)");
+                                            "even darker destiny?', '" + Constants.categoryList.get(0) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://cdn-products.eneba.com/resized-products/fbwtoie90jibxgkrf6mx_350x200_1x-0.jpg'" +
@@ -90,7 +91,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "with all-new features like remastered art and effects, volumetric god rays, dynamic depth of field," +
                                             " screen-space reflections, and more. Skyrim Special Edition also brings the full power of mods to the " +
                                             "PC and consoles. New quests, environments, characters, dialogue, armor, weapons and more – with Mods, there" +
-                                            " are no limits to what you can experience.', 'Aventura / Ação', 59.99)");
+                                            " are no limits to what you can experience.', '" + Constants.categoryList.get(2) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://s2.glbimg.com/2ik4UmZ1jyKN7DDrIEx6M3XiDv0=/1200x/smar" +
@@ -102,7 +103,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "Step into the dirt flecked shoes of former outlaw biker Deacon St. John, a bounty hunter trying to find" +
                                             " a reason to live in a land surrounded by death. Scavenge through abandoned settlements for equipment to craft" +
                                             " valuable items and weapons, or take your chances with other survivors trying to eke out a living through fair tra" +
-                                            "de… or more violent means.', 'Aventura / Ação', 59.99)");
+                                            "de… or more violent means.', '" + Constants.categoryList.get(2) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png'" +
@@ -114,7 +115,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "Grand Theft Auto V for PC features the all-new First Person Mode, " +
                                             "giving players the chance to explore the incredibly detailed world of Los " +
                                             "Santos and Blaine County in an entirely new way across both Story Mode " +
-                                            "and Grand Theft Auto Online. ', 'Aventura / Ação', 59.99)");
+                                            "and Grand Theft Auto Online. ', '" + Constants.categoryList.get(2) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://image.api.playstation.com/cdn/EP0700/CUSA03365_00/gSJkkVfpqk8qEp3fQglGcu3OLbXeHJ1W.png'" +
@@ -123,7 +124,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             " and darkness through faster gameplay and amplified combat intensity. Fans and newcomers alike will get lost in " +
                                             "the game hallmark rewarding gameplay and immersive graphics.\n" +
                                             "Now only embers remain… Prepare yourself once more and Embrace The " +
-                                            "Darkness!', 'Aventura / Ação', 59.99)");
+                                            "Darkness!', '" + Constants.categoryList.get(1) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://s2.glbimg.com/sdE4sWtWEwlcKoGnI4QCpaO4Mxc=/0x0:1200x675/984x0/" +
@@ -136,7 +137,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "s on a journey to reconnect the shattered world one step at a time.\n" +
                                             "\n" +
                                             "Starring Norman Reedus, Mads Mikkelsen, Léa Seydoux, and Lindsay Wagner. ', " +
-                                            "'Aventura / Ação', 59.99)");
+                                            "'" + Constants.categoryList.get(2) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://upload.wikimedia.org/wikipedia/pt/1/19/MGS5_TPP.jpg'" +
@@ -147,7 +148,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             " sweet deal. This game continues the story of the iconic agent Snake. Once again you are" +
                                             " responsible for saving the world from diabolical terrorists bent on gaining power through " +
                                             "destruction. Use stealth, careful planning, and the diverse arsenal of the Diamond Dogs (your m" +
-                                            "ercenary crew) to foil your adversaries.', 'Aventura / Ação', 59.99)");
+                                            "ercenary crew) to foil your adversaries.', '" + Constants.categoryList.get(1) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://image.api.playstation.com/vulcan/img/rnd/202010/1908/35Fq1N8ZBaOsh2odxMBGvjUj.png'" +
@@ -155,7 +156,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "they race against the best drivers in the world. For the first time, players can create their own F1® team " +
                                             "by creating a driver, then choosing a sponsor, an engine supplier, hiring a teammate and competing as the 11th" +
                                             " team on the grid. Build facilities, develop the team over time and drive to the top.', " +
-                                            "'Simulação / Desporto', 59.99)");
+                                            "'" + Constants.categoryList.get(3) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://images-na.ssl-images-amazon.com/images/I/91z7JfyD9%2BL._AC_UL600_SR600,600_.png'" +
@@ -169,7 +170,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             " to either ultimate victory or epic failure.\n" +
                                             "\n" +
                                             "Stop watching, start winning and take control as the manager of" +
-                                            " your own motorsport team.', 'Simulação / Desporto', 59.99)");
+                                            " your own motorsport team.', '" + Constants.categoryList.get(3) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://cdn.cdkeys.com/500x706/media/catalog/product/f/o/football_manager_2021_pc.jpg'" +
@@ -179,7 +180,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "\n" +
                                             "With more than 50 nations and 2,500 clubs at every level of the football pyramid to choose from, the possibil" +
                                             "ities are endless. It’s over to you, boss.', " +
-                                            "'Simulação / Desporto', 59.99)");
+                                            "'" + Constants.categoryList.get(4) + "', 59.99)");
 
                                     db.execSQL("INSERT INTO Game (id, imgURL, title, description, category, price) " +
                                             "VALUES(null, 'https://image.api.playstation.com/cdn/EP4040/CUSA01797_00/NMcAucyANMnYMNkz6V5vk9f5YXty2mCz.png'" +
@@ -187,7 +188,7 @@ public abstract class AppDatabase extends RoomDatabase{
                                             "world circuits, as well as road and racing cars. The game includes a single player career" +
                                             ",special events and allows the player to create and customize offline competitions and mu" +
                                             "ltiplayer races to challenge other players. ', " +
-                                            "'Simulação / Desporto', 59.99)");
+                                            "'" + Constants.categoryList.get(4) + "', 59.99)");
 
                                 }
                             })

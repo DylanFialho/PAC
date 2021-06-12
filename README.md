@@ -1,23 +1,16 @@
 # PAC
  
-Descrição: Aplicaçao para utilizadores verificarem jogos de empresas que fazem parte da publisher
-(datas de lançamento, nomes, tipos de jogos, etc).
+Descrição: Aplicaçao para utilizadores verificarem jogos que estão na loja da publisher, e obterem uma rápida descrição
+e ate ser possivel aceder ao site da mesma para completar a compra.
 
 
 //TODO:
 
-Menu inicial(Admin/ user);
-
-	Admin:
-		Inserçao, alteraçao, remoçao de subsidiarias;
-		Inserçao, alteraçao, remoçao de jogos;
-		Alteraçao de data de publicaçao de jogos.
 	User:
-		Pesquisa de jogos(tipo ou consola);
-		Consulta de datas de lançamento;
+		Pesquisa de jogos(categoria);
 		Consulta de preços;
-		Classificação de jogos;
-		Reviews;
-		Compra de jogos.
+		Consulta de descrição,
+		Criar lista de favoritos,
+		Ver jogos em destaque.
 
  
