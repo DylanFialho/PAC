@@ -1,9 +1,13 @@
 package com.example.pac_app;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +43,42 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
         Glide.with(context).load(game.getImgURL()).into(holder.getGameImageView());
         holder.getTextViewTitle().setText(game.getTitle());
         holder.getTextViewPrice().setText(String.valueOf(game.getPrice()));
+
+        holder.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.custom_dialog);
+                dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.background));
+                //dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                Button goToStore = dialog.findViewById(R.id.buttonToStore);
+                TextView description = dialog.findViewById(R.id.textViewDescription);
+                ImageView gameImageDialog = dialog.findViewById(R.id.imageDialog);
+
+                description.setText(game.getDescription());
+                Glide.with(context).load(game.getImgURL()).into(gameImageDialog);
+
+
+                goToStore.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+
+                       /* Uri webpage = Uri.parse(game.getURL());
+                        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                        if (intent.resolveActivity(context.getPackageManager()) != null) {
+                            context.startActivity(intent);
+                        }else{
+                            //Page not found
+                        }*/
+                    }
+                });
+
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -59,6 +99,10 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
             this.gameImageView = gameView.findViewById(R.id.imageGame);
             this.textViewTitle = gameView.findViewById(R.id.textViewName);
             this.textViewPrice = gameView.findViewById(R.id.textViewPrice);
+        }
+
+        public View getRoot() {
+            return root;
         }
 
         public ImageView getGameImageView(){

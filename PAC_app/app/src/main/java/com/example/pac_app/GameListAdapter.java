@@ -1,15 +1,19 @@
 package com.example.pac_app;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.pac_app.model.Game;
+import com.example.pac_app.ui.home.HomeFragment;
 
 import org.w3c.dom.Text;
 
@@ -45,13 +49,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         holder.getRecyclerView().setLayoutManager(linearLayoutManager);
 
-        holder.getView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-            }
-        });
 
     }
 

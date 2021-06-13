@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <!--<item name="background"></item>-->
+        <item name="android:windowAnimationStyle">@style/animation</item>
     </style>
 
     <style name="Theme.PAC_app.NoActionBar">
@@ -23,4 +24,11 @@
     <style name="Theme.PAC_app.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PAC_app.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
 </resources>

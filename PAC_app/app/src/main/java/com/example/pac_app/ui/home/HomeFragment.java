@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +32,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private List<GameListObject> gameListObjectsList  = new ArrayList<>();
+    private Spinner spinner;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView = root.findViewById(R.id.recyclerViewMain);
+        spinner = root.findViewById(R.id.spinnerCategory);
 
         return root;
     }
@@ -55,6 +59,14 @@ public class HomeFragment extends Fragment {
         GameListAdapter adapter = new GameListAdapter(getContext(), gameListObjectsList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        List<String> spinnerStrings = new ArrayList<>();
+        spinnerStrings.add("Todos");
+        spinnerStrings.addAll(Constants.categoryList);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, spinnerStrings);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(spinnerAdapter);
 
     }
 }
