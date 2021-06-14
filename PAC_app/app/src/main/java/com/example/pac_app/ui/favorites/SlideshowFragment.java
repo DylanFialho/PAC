@@ -1,4 +1,4 @@
-package com.example.pac_app.ui.slideshow;
+package com.example.pac_app.ui.favorites;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
