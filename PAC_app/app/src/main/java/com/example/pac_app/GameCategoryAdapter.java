@@ -2,8 +2,6 @@ package com.example.pac_app;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,25 +17,25 @@ import com.example.pac_app.model.Game;
 
 import java.util.List;
 
-public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHolder> {
+public class GameCategoryAdapter extends RecyclerView.Adapter<GameCategoryAdapter.ViewHolder>{
 
     private final Context context;
     private List<Game> gameList;
 
-    public GameItemAdapter(Context context, List<Game> gameList) {
+    public GameCategoryAdapter(Context context, List<Game> gameList) {
         this.context = context;
         this.gameList = gameList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(this.context).inflate(R.layout.game_item, parent, false);
-        return new ViewHolder(view);
+    public GameCategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(this.context).inflate(R.layout.game_item_category, parent, false);
+        return new GameCategoryAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GameCategoryAdapter.ViewHolder holder, int position) {
 
         Game game = this.gameList.get(position);
         Glide.with(context).load(game.getImgURL()).into(holder.getGameImageView());
@@ -57,17 +55,19 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
             description.setText(game.getDescription());
             Glide.with(context).load(game.getImgURL()).into(gameImageDialog);
 
+            goToStore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
 
-            goToStore.setOnClickListener(view1 -> {
-                dialog.dismiss();
-
-               /* Uri webpage = Uri.parse(game.getURL());
-                Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-                if (intent.resolveActivity(context.getPackageManager()) != null) {
-                    context.startActivity(intent);
-                }else{
-                    //Page not found
-                }*/
+                   /* Uri webpage = Uri.parse(game.getURL());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                    if (intent.resolveActivity(context.getPackageManager()) != null) {
+                        context.startActivity(intent);
+                    }else{
+                        //Page not found
+                    }*/
+                }
             });
 
             dialog.show();
@@ -89,9 +89,9 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
         public ViewHolder(@NonNull View gameView) {
             super(gameView);
             this.root = gameView;
-            this.gameImageView = gameView.findViewById(R.id.imageGame);
-            this.textViewTitle = gameView.findViewById(R.id.textViewName);
-            this.textViewPrice = gameView.findViewById(R.id.textViewPrice);
+            this.gameImageView = gameView.findViewById(R.id.imageViewCategory);
+            this.textViewTitle = gameView.findViewById(R.id.textViewTitleCategory);
+            this.textViewPrice = gameView.findViewById(R.id.textViewPriceCategory);
         }
 
         public View getRoot() {

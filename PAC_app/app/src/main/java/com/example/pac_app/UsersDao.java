@@ -12,9 +12,6 @@ import java.util.List;
 @Dao
 public interface UsersDao {
 
-    @Query("SELECT * FROM Users")
-    List<Users> getAll();
-
     @Query("SELECT * FROM Users WHERE username = :user AND password = :pass")
     Users getByUserAndPass(String user, String pass);
 
