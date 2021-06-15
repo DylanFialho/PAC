@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.pac_app.model.Users;
+
+import java.util.List;
 
 public class ResgisterActivity extends AppCompatActivity {
 
@@ -40,10 +43,19 @@ public class ResgisterActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Users user = new Users(0, userName.getText().toString(), password.getText().toString(), email.getText().toString(), name.getText().toString());
-                AppDatabase.getInstance(ResgisterActivity.this).getUsersDao().insertUser(user);
 
-                startActivity(new Intent(ResgisterActivity.this, LoginActivity.class));
+                List<Users> existingUser = AppDatabase.getInstance(ResgisterActivity.this).getUsersDao().getUsersByUserAndMail(userName.getText().toString(), email.getText().toString());
+
+                if(existingUser.size() != 0){
+                    Toast.makeText(ResgisterActivity.this, "Utilizador já existe", Toast.LENGTH_SHORT).show();
+                }else {
+                    Users user = new Users(0, userName.getText().toString(), password.getText().toString(), email.getText().toString(), name.getText().toString());
+                    AppDatabase.getInstance(ResgisterActivity.this).getUsersDao().insertUser(user);
+
+                    startActivity(new Intent(ResgisterActivity.this, LoginActivity.class));
+                }
+
+
             }
         });
     }

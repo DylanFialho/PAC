@@ -2,6 +2,7 @@ package com.example.pac_app;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class GameCategoryAdapter extends RecyclerView.Adapter<GameCategoryAdapte
             dialog.setContentView(R.layout.custom_dialog);
             dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.background));
 
-            Button goToStore = dialog.findViewById(R.id.buttonToStore);
+            Button goToStore = dialog.findViewById(R.id.buttonToCart);
             TextView description = dialog.findViewById(R.id.textViewDescription);
             ImageView gameImageDialog = dialog.findViewById(R.id.imageDialog);
 
@@ -60,13 +61,7 @@ public class GameCategoryAdapter extends RecyclerView.Adapter<GameCategoryAdapte
                 public void onClick(View view) {
                     dialog.dismiss();
 
-                   /* Uri webpage = Uri.parse(game.getURL());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-                    if (intent.resolveActivity(context.getPackageManager()) != null) {
-                        context.startActivity(intent);
-                    }else{
-                        //Page not found
-                    }*/
+                   context.startActivity(new Intent(context, CartActivity.class));
                 }
             });
 

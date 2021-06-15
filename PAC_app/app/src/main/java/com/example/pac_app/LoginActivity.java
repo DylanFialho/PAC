@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.pac_app.model.Users;
 
@@ -38,9 +39,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login(){
         if(userExists(textUserView.getText().toString(), textPassView.getText().toString())){
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, StoreActivity.class));
         }else {
-            Log.e(TAG, "Login Invalido!");;
+            Toast.makeText(this, "Login Errado", Toast.LENGTH_SHORT).show();
+
         }
     }
 
