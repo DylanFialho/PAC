@@ -15,4 +15,7 @@ public interface GameDao {
 
     @Query("SELECT * FROM Game WHERE category LIKE :category")
     public List<Game> getAllFromCat(String category);
+
+    @Query("SELECT * FROM Game ORDER BY RANDOM() LIMIT 5")
+    public List<Game> getHighLights();
 }

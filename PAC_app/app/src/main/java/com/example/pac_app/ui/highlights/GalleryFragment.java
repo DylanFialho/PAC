@@ -11,25 +11,38 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pac_app.AppDatabase;
+import com.example.pac_app.GameCategoryAdapter;
 import com.example.pac_app.R;
 
 public class GalleryFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
+    private RecyclerView recyclerView;
+    GameCategoryAdapter categoryAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 new ViewModelProvider(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.textViewHighlights);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        recyclerView = root.findViewById(R.id.recyclerViewHL);
+
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        GameCategoryAdapter categoryAdapter = new GameCategoryAdapter(getContext(),
+                AppDatabase.getInstance(getContext()).getGameDao().getHighLights());
+
+        recyclerView.setAdapter(categoryAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
     }
 }
