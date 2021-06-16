@@ -12,13 +12,15 @@ public class Users {
     private String password;
     private String email;
     private String fullName;
+    private boolean isLogged;
 
-    public Users(long id, String username, String password, String email, String fullName) {
+    public Users(long id, String username, String password, String email, String fullName, boolean isLogged) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.fullName = fullName;
+        this.isLogged = isLogged;
     }
 
     public long getId() {
@@ -59,5 +61,13 @@ public class Users {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
     }
 }

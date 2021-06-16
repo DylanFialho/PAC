@@ -49,7 +49,7 @@ public class ResgisterActivity extends AppCompatActivity {
                 if(existingUser.size() != 0){
                     Toast.makeText(ResgisterActivity.this, "Utilizador já existe", Toast.LENGTH_SHORT).show();
                 }else {
-                    Users user = new Users(0, userName.getText().toString(), password.getText().toString(), email.getText().toString(), name.getText().toString());
+                    Users user = new Users(0, userName.getText().toString(), password.getText().toString(), email.getText().toString(), name.getText().toString(), false);
                     AppDatabase.getInstance(ResgisterActivity.this).getUsersDao().insertUser(user);
 
                     startActivity(new Intent(ResgisterActivity.this, LoginActivity.class));

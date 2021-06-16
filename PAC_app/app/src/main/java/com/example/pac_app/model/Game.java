@@ -13,14 +13,16 @@ public class Game {
     private String description;
     private String category;
     private float price;
+    private boolean isInCart;
 
-    public Game(long id, String imgURL, String title, String description, String category, float price) {
+    public Game(long id, String imgURL, String title, String description, String category, float price, boolean isInCart) {
         this.id = id;
         this.imgURL = imgURL;
         this.title = title;
         this.description = description;
         this.category = category;
         this.price = price;
+        this.isInCart = isInCart;
     }
 
     public long getId() {
@@ -69,5 +71,13 @@ public class Game {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public boolean isInCart() {
+        return isInCart;
+    }
+
+    public void setInCart(boolean inCart) {
+        isInCart = inCart;
     }
 }

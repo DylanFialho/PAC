@@ -2,6 +2,7 @@ package com.example.pac_app;
 
 import androidx.room.Dao;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.pac_app.model.Game;
 
@@ -11,11 +12,17 @@ import java.util.List;
 public interface GameDao {
 
     @Query("SELECT * FROM Game")
-    public List<Game> getAll();
+    List<Game> getAll();
 
     @Query("SELECT * FROM Game WHERE category LIKE :category")
-    public List<Game> getAllFromCat(String category);
+    List<Game> getAllFromCat(String category);
 
     @Query("SELECT * FROM Game ORDER BY RANDOM() LIMIT 5")
-    public List<Game> getHighLights();
+    List<Game> getHighLights();
+
+    @Query("SELECT * FROM Game WHERE isInCart = 1")
+    List<Game> getAllInCart();
+
+    @Update
+    public void updateGame(Game game);
 }

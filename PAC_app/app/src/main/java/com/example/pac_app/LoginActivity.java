@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText textUserView;
     private EditText textPassView;
     private Button buttonLogin;
+    public static Users loggedUser;
 
     public static final String TAG = "LoginActivity";
 
@@ -39,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login(){
         if(userExists(textUserView.getText().toString(), textPassView.getText().toString())){
+            loggedUser = AppDatabase.getInstance(LoginActivity.this).getUsersDao().getByUserAndPass(textUserView.getText().toString(), textPassView.getText().toString());
+            AppDatabase.getInstance(LoginActivity.this).getUsersDao().updateUser(loggedUser);
             startActivity(new Intent(LoginActivity.this, StoreActivity.class));
         }else {
             Toast.makeText(this, "Login Errado", Toast.LENGTH_SHORT).show();

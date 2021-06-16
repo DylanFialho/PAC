@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.pac_app.model.Users;
 
@@ -20,5 +21,8 @@ public interface UsersDao {
 
     @Insert
     void insertUser(Users users);
+
+    @Update
+    void updateUser(Users users);
 
 }

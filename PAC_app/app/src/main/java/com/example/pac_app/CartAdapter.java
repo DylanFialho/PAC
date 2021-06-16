@@ -18,25 +18,26 @@ import com.example.pac_app.model.Game;
 
 import java.util.List;
 
-public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHolder> {
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
+
 
     private final Context context;
     private List<Game> gameList;
 
-    public GameItemAdapter(Context context, List<Game> gameList) {
+    public CartAdapter(Context context, List<Game> gameList) {
         this.context = context;
         this.gameList = gameList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(this.context).inflate(R.layout.game_item, parent, false);
+    public CartAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(this.context).inflate(R.layout.cart_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CartAdapter.ViewHolder holder, int position) {
 
         Game game = this.gameList.get(position);
         Glide.with(context).load(game.getImgURL()).into(holder.getGameImageView());
@@ -59,9 +60,6 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
 
             goToStore.setOnClickListener(view1 -> {
                 dialog.dismiss();
-                game.setInCart(true);
-                AppDatabase.getInstance(context).getGameDao().updateGame(game);
-                context.startActivity(new Intent(context, CartActivity.class));
             });
 
             dialog.show();
@@ -83,9 +81,9 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
         public ViewHolder(@NonNull View gameView) {
             super(gameView);
             this.root = gameView;
-            this.gameImageView = gameView.findViewById(R.id.imageGame);
-            this.textViewTitle = gameView.findViewById(R.id.textViewName);
-            this.textViewPrice = gameView.findViewById(R.id.textViewPrice);
+            this.gameImageView = gameView.findViewById(R.id.imageViewCart);
+            this.textViewTitle = gameView.findViewById(R.id.textViewCartName);
+            this.textViewPrice = gameView.findViewById(R.id.textViewCartPrice);
         }
 
         public View getRoot() {
