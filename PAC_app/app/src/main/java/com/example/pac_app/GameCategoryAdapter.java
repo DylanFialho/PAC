@@ -56,13 +56,11 @@ public class GameCategoryAdapter extends RecyclerView.Adapter<GameCategoryAdapte
             description.setText(game.getDescription());
             Glide.with(context).load(game.getImgURL()).into(gameImageDialog);
 
-            goToStore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialog.dismiss();
-
-                   context.startActivity(new Intent(context, CartActivity.class));
-                }
+            goToStore.setOnClickListener(view1 -> {
+                dialog.dismiss();
+                game.setInCart(true);
+                AppDatabase.getInstance(context).getGameDao().updateGame(game);
+                context.startActivity(new Intent(context, CartActivity.class));
             });
 
             dialog.show();

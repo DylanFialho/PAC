@@ -21,6 +21,8 @@ public class ResgisterActivity extends AppCompatActivity {
     private EditText name;
     private Button button;
 
+    public static Users user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,7 @@ public class ResgisterActivity extends AppCompatActivity {
                 if(existingUser.size() != 0){
                     Toast.makeText(ResgisterActivity.this, "Utilizador já existe", Toast.LENGTH_SHORT).show();
                 }else {
-                    Users user = new Users(0, userName.getText().toString(), password.getText().toString(), email.getText().toString(), name.getText().toString(), false);
+                    user = new Users(0, userName.getText().toString(), password.getText().toString(), email.getText().toString(), name.getText().toString(), false);
                     AppDatabase.getInstance(ResgisterActivity.this).getUsersDao().insertUser(user);
 
                     startActivity(new Intent(ResgisterActivity.this, LoginActivity.class));

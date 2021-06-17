@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +46,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.getTextViewTitle().setText(game.getTitle());
         holder.getTextViewPrice().setText(String.valueOf(game.getPrice()));
 
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, game.getTitle(), Toast.LENGTH_SHORT).show();
+                game.setInCart(false);
+
+                AppDatabase.getInstance(context).getGameDao().updateGame(game);
+
+                updateList(gameList);
+            }
+        });
+
         holder.getRoot().setOnClickListener(view -> {
 
             Dialog dialog = new Dialog(context);
@@ -71,12 +85,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return this.gameList.size();
     }
 
+    public void updateList(List<Game> newGames) {
+        this.gameList = newGames;
+        this.notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private View root;
         private ImageView gameImageView;
         private TextView textViewTitle;
         private TextView textViewPrice;
+        private ImageButton button;
 
         public ViewHolder(@NonNull View gameView) {
             super(gameView);
@@ -84,6 +104,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             this.gameImageView = gameView.findViewById(R.id.imageViewCart);
             this.textViewTitle = gameView.findViewById(R.id.textViewCartName);
             this.textViewPrice = gameView.findViewById(R.id.textViewCartPrice);
+            this.button = gameView.findViewById(R.id.imageButton);
         }
 
         public View getRoot() {
@@ -100,6 +121,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         public TextView getTextViewPrice() {
             return textViewPrice;
+        }
+
+        public ImageButton getButton() {
+            return button;
         }
     }
 }

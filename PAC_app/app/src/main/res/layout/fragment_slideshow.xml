@@ -7,7 +7,7 @@
     android:background="@color/cardview_dark_background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".ui.favorites.SlideshowFragment">
+    tools:context=".ui.settings.SettingsFragment">
 
     <TextView
         android:id="@+id/textView2"
