@@ -54,8 +54,6 @@ public class ResgisterActivity extends AppCompatActivity {
 
                     startActivity(new Intent(ResgisterActivity.this, LoginActivity.class));
                 }
-
-
             }
         });
     }
