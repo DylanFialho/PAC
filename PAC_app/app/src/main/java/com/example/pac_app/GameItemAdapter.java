@@ -50,6 +50,7 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
             dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.background));
 
             Button goToStore = dialog.findViewById(R.id.buttonToCart);
+            Button buttonReview = dialog.findViewById(R.id.buttonReview);
             TextView description = dialog.findViewById(R.id.textViewDescription);
             ImageView gameImageDialog = dialog.findViewById(R.id.imageDialog);
 
@@ -62,6 +63,10 @@ public class GameItemAdapter extends RecyclerView.Adapter<GameItemAdapter.ViewHo
                 game.setInCart(true);
                 AppDatabase.getInstance(context).getGameDao().updateGame(game);
                 context.startActivity(new Intent(context, CartActivity.class));
+            });
+
+            buttonReview.setOnClickListener(view12 -> {
+                context.startActivity(new Intent(context, ReviewActivity.class));
             });
 
             dialog.show();

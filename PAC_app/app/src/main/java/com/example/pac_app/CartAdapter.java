@@ -49,7 +49,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, game.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, game.getTitle() + "eliminado", Toast.LENGTH_SHORT).show();
                 game.setInCart(false);
 
                 AppDatabase.getInstance(context).getGameDao().updateGame(game);
@@ -65,6 +65,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.background));
 
             Button goToStore = dialog.findViewById(R.id.buttonToCart);
+            Button buttonReview = dialog.findViewById(R.id.buttonReview);
             TextView description = dialog.findViewById(R.id.textViewDescription);
             ImageView gameImageDialog = dialog.findViewById(R.id.imageDialog);
 
@@ -74,6 +75,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
             goToStore.setOnClickListener(view1 -> {
                 dialog.dismiss();
+            });
+
+            buttonReview.setOnClickListener(view12 -> {
+                context.startActivity(new Intent(context, ReviewActivity.class));
             });
 
             dialog.show();
