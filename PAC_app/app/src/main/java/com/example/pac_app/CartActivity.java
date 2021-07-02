@@ -39,19 +39,13 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setAdapter(cartAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        cartAdapter.updateList(AppDatabase.getInstance(this).getGameDao().getAllInCart());
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CartActivity.this, PaymentActivity.class));
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        List<Game> newGames = AppDatabase.getInstance(this).getGameDao().getAllInCart();
-        cartAdapter.updateList(newGames);
     }
 }
